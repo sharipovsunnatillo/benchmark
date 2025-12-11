@@ -321,8 +321,8 @@
             "type": "prometheus",
             "uid": "PBFA97CFB590B2093"
           },
-          "editorMode": "builder",
-          "expr": "container_memory_usage_bytes{id=\"/docker/b9c7cbf5472b1dcdc09f9ec839401e70fd6b58e85980277df03de76d108f014e\"} / 1024 / 1024",
+          "editorMode": "code",
+          "expr": "container_memory_usage_bytes{id=\"/docker/324d571a42e5e33b7e4510d7c34f588802f59cd8c7d90440a64c4224de159e1d\"} / 1024 / 1024",
           "legendFormat": "Virtual Threads (MB)",
           "range": true,
           "refId": "A"
@@ -332,8 +332,8 @@
             "type": "prometheus",
             "uid": "PBFA97CFB590B2093"
           },
-          "editorMode": "builder",
-          "expr": "container_memory_usage_bytes{id=\"/docker/76a7f50ea30edceecf1d9e237ee4046e20bcf117b60866b5762111bd08b991da\"} / 1024 / 1024",
+          "editorMode": "code",
+          "expr": "container_memory_usage_bytes{id=\"/docker/180654cb5016246f5cc37d9ed43a251af487588bbbaf7261b7202667d2454924\"} / 1024 / 1024",
           "legendFormat": "WebFlux (MB)",
           "range": true,
           "refId": "B"
@@ -433,8 +433,8 @@
             "type": "prometheus",
             "uid": "PBFA97CFB590B2093"
           },
-          "editorMode": "builder",
-          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/docker/b9c7cbf5472b1dcdc09f9ec839401e70fd6b58e85980277df03de76d108f014e\"}[1m]) * 100) / 2",
+          "editorMode": "code",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/docker/324d571a42e5e33b7e4510d7c34f588802f59cd8c7d90440a64c4224de159e1d\"}[1m]) * 100) / 2",
           "legendFormat": "Virtual Threads CPU %",
           "range": true,
           "refId": "A"
@@ -444,8 +444,8 @@
             "type": "prometheus",
             "uid": "PBFA97CFB590B2093"
           },
-          "editorMode": "builder",
-          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/docker/76a7f50ea30edceecf1d9e237ee4046e20bcf117b60866b5762111bd08b991da\"}[1m]) * 100) / 2",
+          "editorMode": "code",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/docker/180654cb5016246f5cc37d9ed43a251af487588bbbaf7261b7202667d2454924\"}[1m]) * 100) / 2",
           "legendFormat": "WebFlux CPU %",
           "range": true,
           "refId": "B"
@@ -460,7 +460,56 @@
   "schemaVersion": 42,
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "allValue": "",
+        "current": {},
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
+        "definition": "label_values(container_memory_usage_bytes{id=~\"/docker/.*\"}, id)",
+        "hide": 2,
+        "includeAll": false,
+        "label": "Virtual Threads Container ID",
+        "multi": false,
+        "name": "virtual_threads_id",
+        "options": [],
+        "query": {
+          "query": "label_values(container_memory_usage_bytes{id=~\"/docker/.*\"}, id)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 2,
+        "regex": ".*virtual.*",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "allValue": "",
+        "current": {},
+        "datasource": {
+          "type": "prometheus",
+          "uid": "PBFA97CFB590B2093"
+        },
+        "definition": "label_values(container_memory_usage_bytes{id=~\"/docker/.*\"}, id)",
+        "hide": 2,
+        "includeAll": false,
+        "label": "WebFlux Container ID",
+        "multi": false,
+        "name": "webflux_id",
+        "options": [],
+        "query": {
+          "query": "label_values(container_memory_usage_bytes{id=~\"/docker/.*\"}, id)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 2,
+        "regex": ".*webflux.*",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
   },
   "time": {
     "from": "now-6h",

@@ -29,7 +29,8 @@ sleep 30
 open http://localhost:3000
 # Login: admin / admin
 
-# 4. ⚠️ IMPORTANT: Update Dashboard (see warning below)
+# 4. Update Grafana dashboard with container IDs
+cd monitoring && ./update-dashboard-ids.sh && cd ..
 
 # 5. Run tests (choose one)
 k6 run k6-parallel-test.js              # Load test: both apps
@@ -38,9 +39,26 @@ k6 run k6-throughput-parallel.js        # Throughput test: both apps
 
 ## ⚠️ CRITICAL: Update Grafana Dashboard After Starting
 
-**cAdvisor requires EXACT Docker container IDs, not container names!**
+**cAdvisor only exposes Docker container IDs in metrics, not container names!**
 
-After `docker-compose up`, you MUST update the Grafana dashboard:
+After `docker-compose up`, you MUST update the Grafana dashboard with current container IDs.
+
+### Option 1: Automated Script (Recommended)
+
+```bash
+# Run this script after starting containers
+cd monitoring
+./update-dashboard-ids.sh
+```
+
+This script automatically:
+1. Detects current container IDs for virtual-threads-app and webflux-app
+2. Updates the Grafana dashboard JSON file
+3. Restarts Grafana to apply changes
+
+**When to run:** Every time you recreate containers (`docker-compose up --build` or `docker-compose down && docker-compose up`)
+
+### Option 2: Manual Update
 
 ```bash
 # 1. Get container IDs
@@ -54,18 +72,14 @@ docker ps --format "{{.ID}} {{.Names}}"
 **2. Update Grafana Dashboard:**
 
 1. Open Grafana: http://localhost:3000
-2. Go to: Dashboards → Virtual Threads vs WebFlux Benchmark
+2. Go to: Dashboards → VT vs WebFlux
 3. Click ⚙️ (Settings) → JSON Model
-4. Find and replace ALL occurrences (multiple places!):
-   - Replace: `"name":"virtual-threads-app"`
-   - With: `"id":"<YOUR_CONTAINER_ID>"` (e.g., `"id":"abc123def456"`)
-
-   - Replace: `"name":"webflux-app"`
-   - With: `"id":"<YOUR_CONTAINER_ID>"` (e.g., `"id":"789ghi012jkl"`)
-
+4. Find and replace ALL occurrences:
+   - Replace: `id="$virtual_threads_id"` with `id="/docker/abc123def456"`
+   - Replace: `id="$webflux_id"` with `id="/docker/789ghi012jkl"`
 5. Click "Save dashboard"
 
-**Why?** cAdvisor API requires container IDs, not names. Without this, CPU/Memory metrics won't appear!
+**Why?** cAdvisor metrics only include `id`, `job`, `instance`, `env`, and `cpu` labels - no container name label exists!
 
 ## Service URLs
 

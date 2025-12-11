@@ -23,6 +23,9 @@ services:
       context: ./virtual-threads
       dockerfile: Dockerfile
     container_name: virtual-threads-app
+    labels:
+      app: "virtual-threads-app"
+      monitoring: "enabled"
     environment:
       DB_HOST: postgres
       DB_PORT: 5432
@@ -51,6 +54,9 @@ services:
       context: ./webflux
       dockerfile: Dockerfile
     container_name: webflux-app
+    labels:
+      app: "webflux-app"
+      monitoring: "enabled"
     environment:
       DB_HOST: postgres
       DB_PORT: 5432

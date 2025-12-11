@@ -1,0 +1,35 @@
+global:
+  scrape_interval: 5s
+  evaluation_interval: 5s
+  scrape_timeout: 5s
+
+scrape_configs:
+  # Virtual Threads Application
+  - job_name: 'virtual-threads'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['virtual-threads-app:8080']
+        labels:
+          application: 'virtual-threads'
+          env: 'benchmark'
+
+  # WebFlux Application
+  - job_name: 'webflux'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['webflux-app:8081']
+        labels:
+          application: 'webflux'
+          env: 'benchmark'
+
+  # cAdvisor for container metrics (CPU, Memory, etc.)
+  - job_name: 'cadvisor'
+    static_configs:
+      - targets: ['cadvisor:8080']
+        labels:
+          env: 'benchmark'
+
+  # Prometheus self-monitoring
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']

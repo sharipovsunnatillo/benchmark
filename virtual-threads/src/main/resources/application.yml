@@ -6,6 +6,13 @@ spring:
     username: ${DB_USER:postgres}
     password: ${DB_PASSWORD:postgres}
     driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: ${DB_POOL_MAX_SIZE:50}
+      minimum-idle: ${DB_POOL_MIN_IDLE:10}
+      pool-name: VT-HikariPool
+      connection-timeout: 20000
+      idle-timeout: 600000
+      max-lifetime: 1800000
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.xml
   threads:

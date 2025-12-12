@@ -434,7 +434,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/docker/954e80e786dad9eb39c2068a9b2a9c546c699e7b61a5278f37d7c2902057309c\"}[1m]) * 100) / 2",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"$virtual_threads_id\"}[1m])) * 100 * 10 / 2",
           "legendFormat": "Virtual Threads CPU %",
           "range": true,
           "refId": "A"
@@ -445,7 +445,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/docker/b2495151c07ac9d8a9dfca03de8b1f9876b2ad285e9496d8240b147cd3d89088\"}[1m]) * 100) / 2",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"$webflux_id\"}[1m])) * 100 * 10 / 2",
           "legendFormat": "WebFlux CPU %",
           "range": true,
           "refId": "B"

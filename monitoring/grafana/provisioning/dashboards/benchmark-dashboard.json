@@ -322,7 +322,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "container_memory_usage_bytes{id=\"/docker/324d571a42e5e33b7e4510d7c34f588802f59cd8c7d90440a64c4224de159e1d\"} / 1024 / 1024",
+          "expr": "container_memory_usage_bytes{id=\"/docker/954e80e786dad9eb39c2068a9b2a9c546c699e7b61a5278f37d7c2902057309c\"} / 1024 / 1024",
           "legendFormat": "Virtual Threads (MB)",
           "range": true,
           "refId": "A"
@@ -333,7 +333,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "container_memory_usage_bytes{id=\"/docker/180654cb5016246f5cc37d9ed43a251af487588bbbaf7261b7202667d2454924\"} / 1024 / 1024",
+          "expr": "container_memory_usage_bytes{id=\"/docker/b2495151c07ac9d8a9dfca03de8b1f9876b2ad285e9496d8240b147cd3d89088\"} / 1024 / 1024",
           "legendFormat": "WebFlux (MB)",
           "range": true,
           "refId": "B"
@@ -434,7 +434,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/docker/324d571a42e5e33b7e4510d7c34f588802f59cd8c7d90440a64c4224de159e1d\"}[1m]) * 100) / 2",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/docker/954e80e786dad9eb39c2068a9b2a9c546c699e7b61a5278f37d7c2902057309c\"}[1m]) * 100) / 2",
           "legendFormat": "Virtual Threads CPU %",
           "range": true,
           "refId": "A"
@@ -445,7 +445,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/docker/180654cb5016246f5cc37d9ed43a251af487588bbbaf7261b7202667d2454924\"}[1m]) * 100) / 2",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"/docker/b2495151c07ac9d8a9dfca03de8b1f9876b2ad285e9496d8240b147cd3d89088\"}[1m]) * 100) / 2",
           "legendFormat": "WebFlux CPU %",
           "range": true,
           "refId": "B"

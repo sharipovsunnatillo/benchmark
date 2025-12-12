@@ -434,7 +434,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"$virtual_threads_id\"}[1m])) * 100 * 10 / 2",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"$virtual_threads_id\"}[1m])) * 100 / 2",
           "legendFormat": "Virtual Threads CPU %",
           "range": true,
           "refId": "A"
@@ -445,7 +445,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"$webflux_id\"}[1m])) * 100 * 10 / 2",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"$webflux_id\"}[1m])) * 100 / 2",
           "legendFormat": "WebFlux CPU %",
           "range": true,
           "refId": "B"

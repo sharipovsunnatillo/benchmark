@@ -28,23 +28,23 @@ const getUsersDuration = new Trend('get_users_duration');
 export const options = {
   stages: [
     // Warm-up
-    { duration: '30s', target: 50 },      // Ramp up to 50 users
+    { duration: '15s', target: 50 },      // Ramp up to 50 users
 
     // Gradual increase
-    { duration: '1m', target: 100 },      // Ramp to 100 users
-    { duration: '1m', target: 100 },      // Stay at 100 users
+    { duration: '15s', target: 100 },      // Ramp to 100 users
+    { duration: '15s', target: 100 },      // Stay at 100 users
 
-    { duration: '1m', target: 200 },      // Ramp to 200 users
-    { duration: '1m', target: 200 },      // Stay at 200 users
+    { duration: '15s', target: 200 },      // Ramp to 200 users
+    { duration: '15s', target: 200 },      // Stay at 200 users
 
-    { duration: '1m', target: 500 },      // Ramp to 500 users
-    { duration: '2m', target: 500 },      // Stay at 500 users
+    { duration: '15s', target: 500 },      // Ramp to 500 users
+    { duration: '30s', target: 500 },      // Stay at 500 users
 
-    { duration: '1m', target: 1000 },     // Ramp to 1000 users
-    { duration: '2m', target: 1000 },     // Stay at 1000 users
+    { duration: '15s', target: 1000 },     // Ramp to 1000 users
+    { duration: '30s', target: 1000 },     // Stay at 1000 users
 
-    { duration: '1m', target: 2000 },     // Ramp to 2000 users
-    { duration: '2m', target: 2000 },     // Stay at 2000 users
+    { duration: '15s', target: 2000 },     // Ramp to 2000 users
+    { duration: '30s', target: 2000 },     // Stay at 2000 users
 
     // Cool down
     { duration: '30s', target: 0 },       // Ramp down to 0 users

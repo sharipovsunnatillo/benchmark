@@ -109,7 +109,7 @@
             "type": "prometheus",
             "uid": "PBFA97CFB590B2093"
           },
-          "expr": "sum(rate(http_server_requests_seconds_count{application=\"virtual-threads\"}[1s]))",
+          "expr": "sum(rate(http_server_requests_seconds_count{application=\"virtual-threads\"}[2s]))",
           "legendFormat": "Virtual Threads",
           "refId": "A"
         },
@@ -118,7 +118,7 @@
             "type": "prometheus",
             "uid": "PBFA97CFB590B2093"
           },
-          "expr": "sum(rate(http_server_requests_seconds_count{application=\"webflux\"}[1s]))",
+          "expr": "sum(rate(http_server_requests_seconds_count{application=\"webflux\"}[2s]))",
           "legendFormat": "WebFlux",
           "refId": "B"
         }
@@ -214,7 +214,7 @@
             "type": "prometheus",
             "uid": "PBFA97CFB590B2093"
           },
-          "expr": "histogram_quantile(0.95, sum(rate(http_server_requests_seconds_bucket{application=\"virtual-threads\"}[1s])) by (le))",
+          "expr": "histogram_quantile(0.95, sum(rate(http_server_requests_seconds_bucket{application=\"virtual-threads\"}[2s])) by (le))",
           "legendFormat": "Virtual Threads P95",
           "refId": "A"
         },
@@ -223,7 +223,7 @@
             "type": "prometheus",
             "uid": "PBFA97CFB590B2093"
           },
-          "expr": "histogram_quantile(0.95, sum(rate(http_server_requests_seconds_bucket{application=\"webflux\"}[1s])) by (le))",
+          "expr": "histogram_quantile(0.95, sum(rate(http_server_requests_seconds_bucket{application=\"webflux\"}[2s])) by (le))",
           "legendFormat": "WebFlux P95",
           "refId": "B"
         }
@@ -434,7 +434,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"$virtual_threads_id\"}[1s])) * 100 / 2",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"$virtual_threads_id\"}[4s])) * 100 / 2",
           "legendFormat": "Virtual Threads CPU %",
           "range": true,
           "refId": "A"
@@ -445,7 +445,7 @@
             "uid": "PBFA97CFB590B2093"
           },
           "editorMode": "code",
-          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"$webflux_id\"}[1s])) * 100 / 2",
+          "expr": "sum(rate(container_cpu_usage_seconds_total{id=\"$webflux_id\"}[4s])) * 100 / 2",
           "legendFormat": "WebFlux CPU %",
           "range": true,
           "refId": "B"
